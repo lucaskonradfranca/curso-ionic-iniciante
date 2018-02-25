@@ -17,8 +17,12 @@ export class MoovieProvider {
     console.log('Hello MoovieProvider Provider');
   }
 
-  getLatestMoovies(){
-    return this.http.get(this.baseApiPath + "/movie/popular?" + this.apiKey);
+  getLatestMoovies(page = 1){
+    return this.http.get(this.baseApiPath + `/movie/popular?page=${page}&` + this.apiKey);
+  }
+
+  getMovieDetail(filmeId){
+    return this.http.get(this.baseApiPath + `/movie/${filmeId}?` + this.apiKey);
   }
 
 }
